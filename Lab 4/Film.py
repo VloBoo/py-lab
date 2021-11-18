@@ -1,6 +1,7 @@
 class Film:
     name = 'Неизвестное название'
-    info = 'Неизвестная информация'
+    #кортеж info = (Краткое описание, Оценка, Год, Кортеж Жанров)
+    info = ()
     mark = '-'
     description = 'Неизвестно'
     date = '----'
@@ -8,17 +9,14 @@ class Film:
     
     def __init__(self, name, info, description, mark, date, genre):
         self.name = name
-        self.info = info
-        self.mark = mark
-        self.date = date
         self.description = description
-        self.genre = genre
+        self.info = (info, mark, date, genre)
 
     def print_info(self):
-        print(f'\nИнформация об фильме\nИмя: {self.name}\nКраткая информация: {self.info}\n')
+        print(f'\nИнформация об фильме\nИмя: {self.name}\nКраткая информация: {self.info[0]}\n')
         
     def print_full_info(self):
-        print(f'\nПолная информация о фильме\n\nНазвание: {self.name}\nКраткая информация: {self.info}\nОценка: {self.mark}\t\tГод: {self.date}\nЖанры: ',end=' ')
-        for g in self.genre:
+        print(f'\nПолная информация о фильме\n\nНазвание: {self.name}\nКраткая информация: {self.info[0]}\nОценка: {self.info[1]}\t\tГод: {self.info[2]}\nЖанры: ',end=' ')
+        for g in self.info[3]:
             print(g,end=',')
         print(f'\n\nОписание: {self.description}\n')
