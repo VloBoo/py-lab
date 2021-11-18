@@ -2,10 +2,6 @@ class Film:
     name = 'Неизвестное название'
     #кортеж info = (Краткое описание, Оценка, Год, Кортеж Жанров)
     info = ()
-    mark = '-'
-    description = 'Неизвестно'
-    date = '----'
-    genre = ['Неизвестно','Известно']
     
     def __init__(self, name, info, description, mark, date, genre):
         self.name = name
