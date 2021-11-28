@@ -10,19 +10,19 @@ def menu():
     for f in films:
         key = 1
         while(key == 1):
-            clear()
+            clear(30)
             f.print_info()
             print('<1> Информация об фильме\t<2> Следующий фильм\t<3> Информация о нас\n<4> Завершение программы')
             s = int(input('\\Выберите действие> '))
             if s == 1:
-                clear()
+                clear(30)
                 f.print_full_info()
                 input('Нажмите Enter для продолжения...')
             elif s == 2:
                 key = 0
             elif s == 3:
-                clear()
-                print('Приложение создано: Черняковым Владиславом ("Github.com/VloBoo/py-lab/Lab 4")\nПриложение использует сервисы TMDB ("www.themoviedb.org") для получения информации о фильмах')
+                clear(30)
+                print('Приложение создано: Черняковым Владиславом ("Github.com/VloBoo/py-lab/Lab 4")')
                 input('Нажмите Enter для продолжения...')
             elif s == 4:
                 print('Мы будем рады вас видеть снова')
@@ -33,10 +33,12 @@ def menu():
         print('Спасибо, что просмотрели все наши фильмы. В будущем фильмы будут дополнены')
         print('==========================================================================')
         
-def clear():
-    for i in range(1,30):#Очистка экрана
-            print()
-            
+def clear(n):
+    if n <= 0:
+        return
+    print()
+    clear(n-1)
+    
 print('Добро пожаловать в меню фильмов')
 menu()
 
