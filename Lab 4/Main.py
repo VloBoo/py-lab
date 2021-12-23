@@ -2,6 +2,10 @@ from Film import Film
 films = []
 
 def menu():
+    if len(films) == 0:
+        print('В list.film не обнаруженно фильмов')
+        print('Предлагаем создать фильм')
+        creatFilm()
     for f in films:
         key = 1
         while(key == 1):
@@ -23,22 +27,7 @@ def menu():
                 return
             elif s == 5:
                 clear(30)
-                name = input('Введите название фильма:')
-                subdescription = input('Введите краткое описание фильма:')
-                description = input('Введите полное описание фильма:')
-                mark = float(input('Введите оценку фильма:'))
-                date = int(input('Введите год фильма:'))
-                print('Введите жанры фильма(для остановни ввода введите 0)')
-                jan = input()
-                janl=[]
-                while jan != '0':
-                    janl.append(jan)
-                    jan = input()
-                films.append(Film(name, subdescription, description, mark, date, tuple(janl)))
-                file = open('V:\\Конспекты\\2 Курс\\ИнструментыПО\\Лабы\\Lab 4\\list.film','a')
-                file.write(f.toStr())
-                file.close()
-                input('Нажмите Enter для продолжения')
+                creatFilm()
             elif s == 6:
                 print()
             else:
@@ -68,9 +57,7 @@ def initFilms():
                 janl.append(jan)
                 jan = read_(file)
             films.append(Film(name, subdescription, description, mark, date, tuple(janl)))
-       
-        
-        
+   
 def read_(file):
     s = file.read(1)
     ss=''
@@ -79,12 +66,33 @@ def read_(file):
         ss = ss + s
         s = file.read(1)
     return ss    
+   
+def creatFilm():
+    name = input('Введите название фильма:')
+    subdescription = input('Введите краткое описание фильма:')
+    description = input('Введите полное описание фильма:')
+    mark = float(input('Введите оценку фильма:'))
+    date = int(input('Введите год фильма:'))
+    print('Введите жанры фильма(для остановни ввода введите 0)')
+    jan = input()
+    janl=[]
+    while jan != '0':
+        janl.append(jan)
+        jan = input()
+    f = Film(name, subdescription, description, mark, date, tuple(janl))
+    films.append(f)
+    file = open('V:\\Конспекты\\2 Курс\\ИнструментыПО\\Лабы\\Lab 4\\list.film','a')
+    file.write(f.toStr())
+    file.close()
+    input('Нажмите Enter для продолжения')    
+    
 
 print('Добро пожаловать в меню фильмов')
-initFilms()
-menu()
-clear(30)
-print('''
+try:
+    initFilms()
+    menu()
+    clear(30)
+    print('''
 ==========================================================================
 Спасибо, что просмотрели все наши фильмы. В будущем фильмы будут дополнены
 ==========================================================================
@@ -114,6 +122,8 @@ print('''
                      
                      
 ''')
+except:
+    print('Ошибка выполнения программы, проверьте, существует ли файл list.film')
 input('Нажмите Enter для завершения')
 
 
