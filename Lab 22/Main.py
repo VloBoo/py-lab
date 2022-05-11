@@ -10,7 +10,10 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-TOKEN ='NzgzNTg1ODA5ODUyMzk5NjY2.GkUZA_.PKc2szRpHhdVcOoRniC8FWU0g9LnzzPs5PBtVk'
+# Ссылка приглашения https://discord.com/api/oauth2/authorize?client_id=783585809852399666&permissions=8&scope=bot
+#Уберите из токена текст [УБЕРИ МЕНЯ], а не то дискорд сбрасывает токены, если находит их на гитхабе
+TOKEN ='NzgzNTg1ODA5ODUyMzk5NjY2[УБЕРИ МЕНЯ].GkUZA_.[УБЕРИ МЕНЯ]PKc2szRpHhdVcOoRniC8FWU0g9LnzzPs5PBtVk'
+
 
 client = discord.Client(activity=discord.Activity(name='Python', type=discord.ActivityType.watching))
 
